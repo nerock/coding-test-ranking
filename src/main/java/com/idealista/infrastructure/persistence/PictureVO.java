@@ -46,4 +46,13 @@ public class PictureVO {
     public boolean isHD() { return quality.equals(HD); }
 
     public boolean isSD() { return quality.equals(SD); }
+
+    @Override
+    public String toString() {
+        return "PictureVO{" +
+                "id=" + id +
+                ", url='" + url + '\'' +
+                ", quality='" + quality + '\'' +
+                '}';
+    }
 }

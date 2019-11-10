@@ -115,6 +115,20 @@ public class AdVO {
     public boolean isGarage() { return typology.equals(GARAGE); }
 
     @Override
+    public String toString() {
+        return "AdVO{" +
+                "id=" + id +
+                ", typology='" + typology + '\'' +
+                ", description='" + description + '\'' +
+                ", pictures=" + pictures +
+                ", houseSize=" + houseSize +
+                ", gardenSize=" + gardenSize +
+                ", score=" + score +
+                ", irrelevantSince=" + irrelevantSince +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
