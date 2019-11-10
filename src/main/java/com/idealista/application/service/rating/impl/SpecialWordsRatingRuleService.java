@@ -1,8 +1,11 @@
 package com.idealista.application.service.rating.impl;
 
 import com.idealista.application.service.domain.SpecialWords;
+import com.idealista.application.service.impl.AdRatingServiceImpl;
 import com.idealista.application.service.rating.RatingRuleService;
 import com.idealista.infrastructure.persistence.AdVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.text.Normalizer;
@@ -13,8 +16,12 @@ public class SpecialWordsRatingRuleService implements RatingRuleService {
 
     private static final String diacriticsPattern = "\\p{InCombiningDiacriticalMarks}+";
 
+    private final Logger logger = LoggerFactory.getLogger(SpecialWordsRatingRuleService.class);
+
     @Override
     public int calculate(AdVO ad) {
+        logger.info("Calculating special words points for ad: {}", ad);
+
         int score = 0;
 
         if (!ad.hasDescription()) {

@@ -1,9 +1,12 @@
 package com.idealista.application.service.rating.impl;
 
+import com.idealista.application.service.impl.AdRatingServiceImpl;
 import com.idealista.application.service.rating.RatingRuleService;
 import com.idealista.infrastructure.persistence.AdVO;
 import com.idealista.infrastructure.persistence.InMemoryPersistence;
 import com.idealista.infrastructure.persistence.PictureVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,10 +21,14 @@ public class PictureRatingRuleService implements RatingRuleService {
 
     private InMemoryPersistence inMemoryPersistence;
 
+    private final Logger logger = LoggerFactory.getLogger(PictureRatingRuleService.class);
+
     public PictureRatingRuleService(InMemoryPersistence inMemoryPersistence) { this.inMemoryPersistence = inMemoryPersistence; }
 
     @Override
     public int calculate(AdVO ad) {
+        logger.info("Calculating pictures points for ad: {}", ad);
+
         List<PictureVO> pictures = getPictures(ad);
 
         if (pictures.isEmpty()) {
